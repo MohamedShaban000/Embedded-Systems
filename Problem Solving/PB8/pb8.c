@@ -17,6 +17,6 @@ int main(void)
 		if(ch=='\n')	break;//wjmzbmr
 		if(alphabet_freq[ch-97]++==0)		++distinct;
 	}
-	(distinct%2==0)?printf("CHAT WITH HER!"):printf("IGNORE HIM!");
+	(distinct%2==0)?printf("yes"):printf("no");
 	return 0;
 }
