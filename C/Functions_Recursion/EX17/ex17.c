@@ -1,6 +1,6 @@
 /*
  * ex17.c
- *	Function to revers words in a string
+ *	Function to reverse words in a string
  *  Created on: Jan 18, 2024
  *  Author: Mohamed Shaban
  */
@@ -21,16 +21,21 @@ int main(void)
 
 void reverse_string_words()
 {
-	char str[100][100];
-	int i=0;
-	for(i=0;i<3;i++)
+	char ch, str[100][100];
+	int i=0,j=0;
+	while(1)
 	{
-		scanf("%s",str[i]);
+		scanf("%c",&ch);
+		if(ch=='\n')		break;
+		else if(ch==' ')
+		{
+			i++;		j=0;
+		}
+		else	str[i][j++]=ch;
 	}
-	for(;i>=0;i--)
+	for(j=i;j>=0;j--)
 	{
-		printf("%s ",str[i]);
-		fflush(stdout);
+		printf("%s ",str[j]);
+		fflush(stdout);		fflush(stdin);
 	}
-
 }

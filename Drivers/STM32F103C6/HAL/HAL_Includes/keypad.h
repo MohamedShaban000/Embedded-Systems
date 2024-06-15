@@ -1,0 +1,42 @@
+/*
+ * gpio.h
+ *
+ *  Created on: May 16, 2024
+ *      Author: Mohamed Shaban
+ */
+
+#ifndef KEYPAD_H_
+#define KEYPAD_H_
+
+#include "Platform_Data_Types.h"
+#include "gpio.h"
+
+/*******************************************************************************
+ *                                Definitions                                  *
+ *******************************************************************************/
+
+/* Keypad configurations for number of rows and columns */
+#define KEYPAD_NUM_COLS                  4
+#define KEYPAD_NUM_ROWS                  4
+
+/* Keypad Port Configurations */
+#define KEYPAD_PORT_ID                   GPIOB
+
+#define KEYPAD_FIRST_ROW_PIN_ID           GPIO_PIN0
+#define KEYPAD_FIRST_COLUMN_PIN_ID        GPIO_PIN5
+
+/* Keypad button logic configurations */
+#define KEYPAD_BUTTON_PRESSED            LOGIC_HIGH
+#define KEYPAD_BUTTON_RELEASED           LOGIC_LOW
+
+/*******************************************************************************
+ *                      Functions Prototypes                                   *
+ *******************************************************************************/
+
+/*
+ * Description :
+ * Get the Keypad pressed button
+ */
+uint8 KEYPAD_getPressedKey(void);
+
+#endif /* KEYPAD_H_ */

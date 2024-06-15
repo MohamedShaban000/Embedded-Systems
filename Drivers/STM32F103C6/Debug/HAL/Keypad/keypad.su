@@ -1,0 +1,2 @@
+../HAL/Keypad/keypad.c:35:7:KEYPAD_getPressedKey	16	static
+../HAL/Keypad/keypad.c:112:14:KEYPAD_4x4_adjustKeyNumber	24	static

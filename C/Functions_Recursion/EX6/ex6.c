@@ -1,6 +1,6 @@
 /*
  * ex6.c
- *
+ *	Check the user name
  *  Created on: Jan 16, 2024
  *  Author: Mohamed Shaban
  */
@@ -8,7 +8,7 @@
 #include <Stdio.h>
 #include <string.h>
 
-int are_different(char str[], char str2[]);
+int are_different(char str1[], char str2[]);
 
 int main(void)
 {
@@ -31,7 +31,7 @@ int main(void)
 }
 int are_different(char str1[], char str2[])
 {
-	if(stricmp(str1,str2))
+	if(strcmp(str1,str2))
 		return 1;
 	else
 		return 0;

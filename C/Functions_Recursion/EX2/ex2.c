@@ -24,7 +24,7 @@ int main(void)
 	printf("Enter the size of the second array: ");
 	fflush(stdout);		fflush(stdin);
 	scanf("%d",&n2);
-	printf("Enter the first array elements: ");
+	printf("Enter the second array elements: ");
 	fflush(stdout);
 	for(i=0;i<n2;i++)
 	{

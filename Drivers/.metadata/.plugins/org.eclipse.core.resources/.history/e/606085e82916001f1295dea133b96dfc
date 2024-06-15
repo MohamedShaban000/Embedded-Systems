@@ -1,0 +1,73 @@
+/*
+ * EXTI.c
+ *
+ *  Created on: May 19, 2024
+ *      Author: Mohamed Shaban
+ */
+
+#include "EXTI.h"
+
+//Generic Functions
+void EXTI_Update(EXTI_PinConfig_t* EXTI_pinCFG)
+{
+	//Adjust pin to be input floating
+	GPIO_PinConfig_t pinCfg;
+	pinCfg.GPIO_PINNumber=EXTI_pinCFG->EXTI_Pin.pinNum;
+	pinCfg.GPIO_Mode=GPIO_Mode_AF_IN;
+	MCAL_GPIO_init( EXTI_pinCFG->EXTI_Pin.GPIOx,&pinCfg);
+	//Mapping GPIO PIN to external interrupt line
+	uint8 AFIO_reg_index = EXTI_pinCFG->EXTI_Pin.EXTI_Line/4;
+	uint8 AFIO_bit_pos = 4*(EXTI_pinCFG->EXTI_Pin.EXTI_Line % 4);
+	AFIO
+
+}
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_init
+* @brief 		-Initializes the EXTI according to the configuration structure
+* @param [in] 	-pinCFG :pointer to the configuration structure
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_Init(EXTI_PinConfig_t* EXTI_pinCFG)
+{
+
+}
+
+
+/*=================================================================================================
+* @Fn-           MCAL_EXTI_Update
+* @brief 		-update the configuration for the required EXTI PIN
+* @param [in] 	-pinCFG : the configuration structure
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_Update(EXTI_PinConfig_t* EXTI_pinCFG)
+{}
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_EXTI_DeInit
+* @brief 		-reset EXTI registers and  disable IRQ from NVIC
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_DeInit(void)
+{
+	// Reset EXTI controller Registers
+		EXTI->IMR   = 0x00000000 ;
+		EXTI->EMR   = 0x00000000 ;
+		EXTI->RTSR  = 0x00000000 ;
+		EXTI->FTSR  = 0x00000000 ;
+		EXTI->SWIER = 0x00000000 ;
+		EXTI->PR 	= 0xFFFFFFFF ;
+	//Disable NVIC IRQ EXTI lines
+		NVIC_EXTI0_IRQ_Disable();
+		NVIC_EXTI1_IRQ_Disable();
+		NVIC_EXTI2_IRQ_Disable();
+		NVIC_EXTI3_IRQ_Disable();
+		NVIC_EXTI4_IRQ_Disable();
+		NVIC_EXTI9_5_IRQ_Disable();
+		NVIC_EXTI15_10IRQ_Disable();
+}

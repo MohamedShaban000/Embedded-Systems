@@ -1,0 +1,95 @@
+/*
+ * gpio.c
+ *
+ *  Created on: May 16, 2024
+ *      Author: Mohamed Shaban
+ */
+
+
+#include <gpio.h>
+
+
+uint8 getPINPos(uint8 PIN_Num)
+{
+	switch(PIN_Num)
+	{
+	case 0:
+	case 8:
+		return 0;
+		break;
+	case 1:
+	case 9:
+		return 4;
+		break;
+	case 2:
+	case 10:
+		return 8;
+		break;
+	case 3:
+	case 11:
+		return 12;
+		break;
+	case 4:
+	case 12:
+		return 16;
+		break;
+	case 5:
+	case 13:
+		return 20;
+		break;
+	case 6:
+	case 14:
+		return 24;
+		break;
+	case 7:
+	case 15:
+		return 28;
+		break;
+	default:
+		return -1;
+		break;
+	}
+}
+
+
+/*=================================================================================================
+ * @Fn-           MCAL_GPIO_init
+ * @brief 		-Initializes the GPIOx PINy according to the specified parameters of PinConfig
+ * @param [in] 	-GPIOx : where x can be (A..D depending on device used) to select GPIO peripheral
+ * @param [in]	-PinConfig : Pointer to GPIO_PinConfig_t which contains
+ * 				 the configuration info for specified GPIO
+ * @retval       -None
+ * Note			-STM32F103C6 MCU has GPIO A,B,C,D,E ports
+ * 				 but LQFP48 Package has A,B ,Part of C&D
+ *
+====================================================================================================*/
+void  MCAL_GPIO_init (GPIO_TypeDef* GPIOx ,GPIO_PinConfig_t* PINConfig)
+{
+	vuint32 configReg = (PINConfig->GPIO_PINNumber<8)?GPIOx->CRL:GPIOx->CRH;
+	configReg &= ~(0xf<<getPINPos(PINConfig->GPIO_PINNumber));
+	uint8 PIN_TempConfig;
+	if( (PINConfig->GPIO_Mode == GPIO_Mode_OUT_PP) || (PINConfig->GPIO_Mode == GPIO_Mode_OUT_OD)||
+			(PINConfig->GPIO_Mode == GPIO_Mode_AF_OUT_PP) || (PINConfig->GPIO_Mode == GPIO_Mode_AF_OUT_OD))
+	{
+		PIN_TempConfig =  (((PINConfig->GPIO_Mode - 4) << 2) | PINConfig->GPIO_Speed) & 0X0F;
+	}
+   if( (PINConfig->GPIO_Mode == GPIO_Mode_Analog) || (PINConfig->GPIO_Mode == GPIO_Mode_IN_Float))
+	{
+		PIN_TempConfig = ( ((PINConfig->GPIO_Mode)<<2)|(0x0)) & (0xf);
+	}
+	else if((PINConfig->GPIO_Mode == GPIO_Mode_AF_IN))
+	{
+		PIN_TempConfig = ( ((GPIO_Mode_IN_Float)<<2)|(0x0)) & (0xf);
+	}
+	else
+	{
+		PIN_TempConfig = ( ((PINConfig->GPIO_Mode)<<2)|(0x0)) & (0xf);
+		if(PINConfig->GPIO_Mode == GPIO_Mode_IN_PD)
+			GPIOx->ODR &= ~(1<<PINConfig->GPIO_PINNumber);
+		else
+			GPIOx->ODR |= (1<<PINConfig->GPIO_PINNumber);
+	}
+   configReg |= (PIN_TempConfig<<getPINPos(PINConfig->GPIO_PINNumber));
+}
+
+

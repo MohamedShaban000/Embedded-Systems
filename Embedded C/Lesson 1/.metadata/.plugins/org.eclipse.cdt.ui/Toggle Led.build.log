@@ -1,0 +1,20 @@
+00:26:08 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+
+00:26:10 Build Finished. 0 errors, 0 warnings. (took 1s.703ms)
+

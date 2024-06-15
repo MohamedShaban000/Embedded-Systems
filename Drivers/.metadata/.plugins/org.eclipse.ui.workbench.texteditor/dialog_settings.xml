@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="PinCfg"/>
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<list key="findhistory">
+			<item value="PinCfg"/>
+			<item value="MCAL_GPIO_WritePin"/>
+			<item value="GPIO_MODE"/>
+			<item value="MCAL_GPIO_Init"/>
+			<item value="GPIO_Output_Speed"/>
+			<item value="uint32_t"/>
+			<item value="GPIO_MODE_INPUT_FLO"/>
+			<item value="GPIO_Mode_IN_Float"/>
+			<item value="GPIO_SPEED_10M"/>
+			<item value="GPIO_MODE_OUTPUT_PP"/>
+			<item value="GPIO_PinNumber"/>
+			<item value="EN"/>
+			<item value="EXTI"/>
+			<item value="Disable"/>
+			<item value="(*(vuint32*)NVIC_Base+0x000)"/>
+		</list>
+		<list key="replacehistory">
+			<item value="MCAL_GPIO_WritePIN"/>
+			<item value="GPIO_Mode"/>
+			<item value="MCAL_GPIO_init"/>
+			<item value="GPIO_Speed"/>
+			<item value="uint32"/>
+			<item value="GPIO_Mode_IN_Float"/>
+			<item value="GPIO_Speed_10MHZ"/>
+			<item value="GPIO_Mode_OUT_PP"/>
+			<item value="GPIO_PINNumber"/>
+			<item value="Disable"/>
+			<item value="( *(vuint32*)(NVIC_Base+0x000) )"/>
+			<item value="EXTI15_10_IRQ"/>
+			<item value="EXTI9_5_IRQ"/>
+			<item value="vuint32"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1356"/>
+		<item key="DIALOG_Y_ORIGIN" value="132"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="646"/>
+		<item key="DIALOG_Y_ORIGIN" value="354"/>
+	</section>
+</section>

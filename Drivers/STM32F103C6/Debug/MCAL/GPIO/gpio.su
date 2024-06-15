@@ -1,0 +1,9 @@
+../MCAL/GPIO/gpio.c:12:7:getPINPos	16	static
+../MCAL/GPIO/gpio.c:66:7:MCAL_GPIO_init	32	static
+../MCAL/GPIO/gpio.c:102:7:MCAL_GPIO_Deinit	16	static
+../MCAL/GPIO/gpio.c:124:7:MCAL_GPIO_ReadPIN	16	static
+../MCAL/GPIO/gpio.c:139:8:MCAL_GPIO_ReadPort	16	static
+../MCAL/GPIO/gpio.c:154:6:MCAL_GPIO_WritePIN	16	static
+../MCAL/GPIO/gpio.c:171:6:MCAL_GPIO_WritePort	16	static
+../MCAL/GPIO/gpio.c:186:7:MCAL_GPIO_TogglePIN	16	static
+../MCAL/GPIO/gpio.c:202:8:MCAL_GPIO_LockPIN	24	static

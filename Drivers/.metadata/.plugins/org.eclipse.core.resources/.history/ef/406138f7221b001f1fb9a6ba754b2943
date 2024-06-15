@@ -1,0 +1,209 @@
+/*
+ * usart.c
+ *
+ *  Created on: May 23, 2024
+ *      Author: Mohamed Shaban
+ */
+
+#include "usart.h"
+#include "RCC.h"
+
+USART_Config_t* g_USARt_CFG[3];
+
+
+/*=================================================================================================
+ * @Fn-           MCAL_USART_Init
+ * @brief 		-Adjust the configuration for USART
+ * @param [in] 	-USARTx : where x can be (1,2,3)
+ * @param [in]	-USART_CFG : Pointer to USART configuration structure
+ * 				 the configuration info for specified GPIO
+ * @retval       -None
+ * Note			-None
+================================================================================================*/
+void MCAL_USART_Init(USART_TypeDef* USARTx ,USART_Config_t* USART_CFG)
+{
+	uint32 P_Clk, BRR_Temp;
+	//Save configuration of the required USART to be used in another functions and enable clock for the required USART
+	if(USARTx == USART1)
+	{
+		g_USARt_CFG[0] = USART_CFG;
+		RCC_USART1_CLOCK_EN();
+	}else if(USARTx == USART2)
+	{
+		g_USARt_CFG[1] = USART_CFG;
+		RCC_USART1_CLOCK_EN();
+	}else if(USARTx == USART3)
+	{
+		g_USARt_CFG[2] = USART_CFG;
+		RCC_USART1_CLOCK_EN();
+	}
+	//Enable the required USART instance
+	USARTx->CR1 |= (1<<13);
+	//Adjust USART mode
+	USARTx->CR1 |= USART_CFG->USART_Mode;
+	//Set the payload length
+	USARTx->CR1 |= USART_CFG->payload;
+	//Chossing parity state
+	USARTx->CR1 |= USART_CFG->parity;
+	//Chossing number of stop bits
+	USARTx->CR2 |= USART_CFG->stop_Bits;
+	//Adjust HWFlowCtrl pins
+	USARTx->CR3 |= USART_CFG->HWFlowCtrl;
+	//set BRR register
+	if(USARTx == USART1)
+	{
+		P_Clk = MCAL_RCC_get_PCLK2();
+	}else
+	{
+		P_Clk = MCAL_RCC_get_PCLK1();
+	}
+	BRR_Temp = USART_BRR(P_Clk,USART_CFG->USART_BaudRate);
+	USARTx->BRR = BRR_Temp;
+	//Adjust IRQ
+	if(USART_CFG->USART_IRQ_Type!=USART_IRQ_None)
+	{
+		//Enable this type of USART interrupt
+		USARTx->CR1 |= USART_CFG->USART_IRQ_Type;
+		//Enable NVIC for this  USART instance
+		if(USARTx == USART1)
+		{
+			NVIC_USART1_IRQ_EN();
+		}else if(USARTx == USART2)
+		{
+			NVIC_USART2_IRQ_EN();
+		}else if(USARTx == USART3)
+		{
+			NVIC_USART3_IRQ_EN();
+		}
+	}
+
+}
+
+/*=================================================================================================
+ * @Fn-           MCAL_USART_DeInit
+ * @brief 		-Reset the chosen USART and disable IRQ interrupt line
+ * @param [in] 	-USARTx : where x can be (1,2,3)
+ * @retval       -None
+ * Note			-None
+================================================================================================*/
+void MCAL_USART_DeInit(USART_TypeDef* USARTx )
+{
+	if(USARTx == USART1)
+	{
+		RCC->APB2RSTR |= (1<<14);
+		NVIC_USART1_IRQ_Disable();
+		//Disable clock for USART1
+		(RCC->APB2ENR |= 1<<14);
+	}
+	else if(USARTx == USART2)
+	{
+		RCC->APB1RSTR |= (1<<17);
+		NVIC_USART2_IRQ_Disable();
+		//Disable clock for USART2
+		(RCC->APB2ENR |= 1<<17);
+	}
+	else if(USARTx == USART3)
+	{
+		RCC->APB1RSTR |= (1<<18);
+		NVIC_USART3_IRQ_Disable();
+		//Disable clock for USART3
+		(RCC->APB2ENR |= 1<<18);
+	}
+}
+
+/*=================================================================================================
+ * @Fn-           MCAL_USART_Send
+ * @brief 		-Send the required data
+ * @param [in] 	-USARTx : where x can be (1,2,3)
+ * @param [in]	-pTX_buff : Data to be transmitted
+ * @param [in]	-polling : if you want to use interrupt "disable polling"
+ * @retval       -None
+ * Note			-When transmitting with the parity enabled (PCE bit set to 1 in the USART_CR1 register),
+				 the value written in the MSB (bit 7 or bit 8 depending on the data length) has no effect
+				 because it is replaced by the parity.
+				 When receiving with the parity enabled, the value read in the MSB bit is the received parity
+				 bit
+================================================================================================*/
+void MCAL_USART_Send(USART_TypeDef* USARTx ,uint16 pTX_buff, polling_state polling)
+{
+	if(polling == polling_en)
+	{
+		while(!( (USARTx->SR)>>7 &1)){}
+	}
+
+	if(USARTx == USART1)
+	{
+		if(g_USARt_CFG[0]->payload == Payload__Length_9)
+			USARTx->DR = (pTX_buff&(uint16)0x1ff);
+		else if(g_USARt_CFG[0]->payload == Payload__Length_8)
+			USARTx->DR = (pTX_buff&(uint16)0xff);
+	}
+
+	else if(USARTx == USART2)
+	{
+		if(g_USARt_CFG[1]->payload == Payload__Length_9)
+			USARTx->DR = (pTX_buff&(uint16)0x1ff);
+		else if(g_USARt_CFG[1]->payload == Payload__Length_8)
+			USARTx->DR = (pTX_buff&(uint16)0xff);
+	}
+
+	else if(USARTx == USART3)
+	{
+		if(g_USARt_CFG[2]->payload == Payload__Length_9)
+			USARTx->DR = (pTX_buff&(uint16)0x1ff);
+		else if(g_USARt_CFG[2]->payload == Payload__Length_8)
+			USARTx->DR = (pTX_buff&(uint16)0xff);
+	}
+}
+
+
+/*=================================================================================================
+ * @Fn-           MCAL_USART_Receive
+ * @brief 		-Receiveng the data
+ * @param [in] 	-USARTx : where x can be (1,2,3)
+ * @param [in]	-pRX_buff : the buffer to be filled with the received data
+ * @param [in]	-polling : if you want to use interrupt "disable polling"
+ * @retval       -None
+ * Note			-When transmitting with the parity enabled (PCE bit set to 1 in the USART_CR1 register),
+				 the value written in the MSB (bit 7 or bit 8 depending on the data length) has no effect
+				 because it is replaced by the parity.
+				 When receiving with the parity enabled, the value read in the MSB bit is the received parity
+				 bit
+================================================================================================*/
+void MCAL_USART_Receive(USART_TypeDef* USARTx ,uint16* pRX_buff, polling_state polling)
+{
+	if(polling == polling_en)
+	{
+		while(!( (USARTx->SR)>>5 &1)){}
+	}
+
+	if(USARTx == USART1)
+	{
+		if(g_USARt_CFG[0]->payload == Payload__Length_9)
+		{
+			if(g_USARt_CFG[0]->parity==Parity_State_None)
+				*pRX_buff=(uint16)USARTx->DR;
+			else
+				*pRX_buff=(uint16)( (USARTx->DR)&0xff );
+
+
+		}
+		else if(g_USARt_CFG[0]->payload == Payload__Length_8)
+			USARTx->DR = (pTX_buff&(uint16)0xff);
+	}
+
+
+}
+
+
+
+
+/*=================================================================================================
+ * @Fn-           MCAL_USART_GPIO_SetPins
+ * @brief 		-Adjust the pins to work as USART pins
+ * @param [in] 	-USARTx : where x can be (1,2,3)
+ * @retval       -None
+ * Note			-None
+================================================================================================*/
+void MCAL_USART_GPIO_SetPins(USART_TypeDef* USARTx)
+{}

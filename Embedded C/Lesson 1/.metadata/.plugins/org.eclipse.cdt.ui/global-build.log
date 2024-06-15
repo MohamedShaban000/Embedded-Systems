@@ -1,0 +1,315 @@
+23:15:15 **** Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c6tx.d" -MT"Startup/startup_stm32f103c6tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c6tx.o" "../Startup/startup_stm32f103c6tx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    684	      8	   1568	   2260	    8d4	Toggle Led.elf
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+ 
+23:16:05 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    684	      8	   1568	   2260	    8d4	Toggle Led.elf
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+ 
+23:18:09 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    684	      8	   1568	   2260	    8d4	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+ 
+Finished building: Toggle Led.hex
+ 
+23:22:12 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    704	      8	   1568	   2280	    8e8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+23:24:25 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+../Src/main.c: In function 'main':
+../Src/main.c:29:62: error: expected ';' before ')' token
+   29 | #define APB2ENR  *((volatile unsigned int* )(RCC_BASE + 0x18))
+      |                                                              ^
+../Src/main.c:39:2: note: in expansion of macro 'APB2ENR'
+   39 |  APB2ENR |= 0x2;
+      |  ^~~~~~~
+../Src/main.c:29:62: error: expected statement before ')' token
+   29 | #define APB2ENR  *((volatile unsigned int* )(RCC_BASE + 0x18))
+      |                                                              ^
+../Src/main.c:39:2: note: in expansion of macro 'APB2ENR'
+   39 |  APB2ENR |= 0x2;
+      |  ^~~~~~~
+../Src/main.c:39:10: error: expected expression before '|=' token
+   39 |  APB2ENR |= 0x2;
+      |          ^~
+../Src/main.c:33:63: error: expected ';' before ')' token
+   33 | #define CRH    *((volatile unsigned int* )(GPIOPA_BASE + 0x04))
+      |                                                               ^
+../Src/main.c:40:2: note: in expansion of macro 'CRH'
+   40 |  CRH &= 0xff0Fffff;
+      |  ^~~
+../Src/main.c:33:63: error: expected statement before ')' token
+   33 | #define CRH    *((volatile unsigned int* )(GPIOPA_BASE + 0x04))
+      |                                                               ^
+../Src/main.c:40:2: note: in expansion of macro 'CRH'
+   40 |  CRH &= 0xff0Fffff;
+      |  ^~~
+../Src/main.c:40:6: error: expected expression before '&=' token
+   40 |  CRH &= 0xff0Fffff;
+      |      ^~
+../Src/main.c:33:63: error: expected ';' before ')' token
+   33 | #define CRH    *((volatile unsigned int* )(GPIOPA_BASE + 0x04))
+      |                                                               ^
+../Src/main.c:41:2: note: in expansion of macro 'CRH'
+   41 |  CRH |= 0x00200000;
+      |  ^~~
+../Src/main.c:33:63: error: expected statement before ')' token
+   33 | #define CRH    *((volatile unsigned int* )(GPIOPA_BASE + 0x04))
+      |                                                               ^
+../Src/main.c:41:2: note: in expansion of macro 'CRH'
+   41 |  CRH |= 0x00200000;
+      |  ^~~
+../Src/main.c:41:6: error: expected expression before '|=' token
+   41 |  CRH |= 0x00200000;
+      |      ^~
+../Src/main.c:34:63: error: expected ';' before ')' token
+   34 | #define ODR    *((volatile unsigned int* )(GPIOPA_BASE + 0x0c))
+      |                                                               ^
+../Src/main.c:44:3: note: in expansion of macro 'ODR'
+   44 |   ODR |=(1<<13);
+      |   ^~~
+../Src/main.c:34:63: error: expected statement before ')' token
+   34 | #define ODR    *((volatile unsigned int* )(GPIOPA_BASE + 0x0c))
+      |                                                               ^
+../Src/main.c:44:3: note: in expansion of macro 'ODR'
+   44 |   ODR |=(1<<13);
+      |   ^~~
+../Src/main.c:44:7: error: expected expression before '|=' token
+   44 |   ODR |=(1<<13);
+      |       ^~
+../Src/main.c:34:63: error: expected ';' before ')' token
+   34 | #define ODR    *((volatile unsigned int* )(GPIOPA_BASE + 0x0c))
+      |                                                               ^
+../Src/main.c:46:3: note: in expansion of macro 'ODR'
+   46 |   ODR &= ~(1<<13);
+      |   ^~~
+../Src/main.c:34:63: error: expected statement before ')' token
+   34 | #define ODR    *((volatile unsigned int* )(GPIOPA_BASE + 0x0c))
+      |                                                               ^
+../Src/main.c:46:3: note: in expansion of macro 'ODR'
+   46 |   ODR &= ~(1<<13);
+      |   ^~~
+../Src/main.c:46:7: error: expected expression before '&=' token
+   46 |   ODR &= ~(1<<13);
+      |       ^~
+make: *** [Src/subdir.mk:25: Src/main.o] Error 1
+"make -j6 all" terminated with exit code 2. Build might be incomplete.
+23:25:23 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	      8	   1568	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+Finished building: Toggle Led.hex
+ 
+ 
+23:31:28 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	      8	   1568	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+Finished building: Toggle Led.hex
+ 
+ 
+23:48:52 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+Finished building: Toggle Led.hex
+ 
+ 
+23:50:28 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+23:53:17 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+23:53:59 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+00:18:00 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+   text	   data	    bss	    dec	    hex	filename
+    672	      8	   1568	   2248	    8c8	Toggle Led.elf
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.hex
+ 
+Finished building: Toggle Led.list
+ 
+00:24:39 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+ 
+Finished building: Toggle Led.list
+Finished building: Toggle Led.hex
+ 
+ 
+00:25:25 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 
+00:26:08 **** Incremental Build of configuration Debug for project Toggle Led ****
+make -j6 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C6Tx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "Toggle Led.elf" @"objects.list"   -mcpu=cortex-m3 -T"F:\Git_Hub\Embedded-Systems\Embedded-Systems\Embedded C\Lesson 1\Toggle Led\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Toggle Led.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Toggle Led.elf
+ 
+arm-none-eabi-size   Toggle\ Led.elf 
+arm-none-eabi-objdump -h -S  Toggle\ Led.elf  > "Toggle Led.list"
+   text	   data	    bss	    dec	    hex	filename
+    672	     12	   1564	   2248	    8c8	Toggle Led.elf
+arm-none-eabi-objcopy  -O ihex  Toggle\ Led.elf  "Toggle Led.hex"
+Finished building: default.size.stdout
+Finished building: Toggle Led.list
+ 
+Finished building: Toggle Led.hex
+ 
+ 

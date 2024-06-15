@@ -1,0 +1,82 @@
+/*
+ * usart.c
+ *
+ *  Created on: May 23, 2024
+ *      Author: Mohamed Shaban
+ */
+
+
+/*=================================================================================================
+* @Fn-           MCAL_USART_Init
+* @brief 		-Adjust the configuration for USART
+* @param [in] 	-USARTx : where x can be (1,2,3)
+* @param [in]	-USART_CFG : Pointer to USART configuration structure
+* 				 the configuration info for specified GPIO
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_USART_Init(USART_TypeDef* USARTx ,USART_Config_t* USART_CFG)
+{}
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_USART_DeInit
+* @brief 		-Reset the chosen USART and disable IRQ interrupt line
+* @param [in] 	-USARTx : where x can be (1,2,3)
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_USART_DeInit(USART_TypeDef* USARTx )
+{
+	if(USARTx == USART1)
+	{
+
+	}
+	else if(USARTx == USART2)
+	{
+
+	}
+	else if(USARTx == USART3)
+	{
+
+	}
+}
+
+/*=================================================================================================
+* @Fn-           MCAL_USART_Send
+* @brief 		-Send the required data
+* @param [in] 	-USARTx : where x can be (1,2,3)
+* @param [in]	-pTX_buff : Data to be transmitted
+* @param [in]	-polling : if you want to use interrupt "disable polling"
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_USART_Send(USART_TypeDef* USARTx ,uint16* pTX_buff, polling_state polling)
+{}
+
+
+/*=================================================================================================
+* @Fn-           MCAL_USART_Receive
+* @brief 		-Receiveng the data
+* @param [in] 	-USARTx : where x can be (1,2,3)
+* @param [in]	-pRX_buff : the buffer to be filled with the received data
+* @param [in]	-polling : if you want to use interrupt "disable polling"
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_USART_Receive(USART_TypeDef* USARTx ,uint16* pRX_buff, polling_state polling)
+{}
+
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_USART_GPIO_SetPins
+* @brief 		-Adjust the pins to work as USART pins
+* @param [in] 	-USARTx : where x can be (1,2,3)
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_USART_GPIO_SetPins(USART_TypeDef* USARTx)
+{}

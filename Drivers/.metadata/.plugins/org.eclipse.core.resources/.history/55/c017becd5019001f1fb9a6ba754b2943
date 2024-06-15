@@ -1,0 +1,25 @@
+/*
+ * RCC.h
+ *
+ *  Created on: May 23, 2024
+ *      Author: Mohamed Shaban
+ */
+
+#ifndef MCAL_INCLUDES_RCC_H_
+#define MCAL_INCLUDES_RCC_H_
+
+#include "Platform_Data_Types.h"
+
+//-*-*-*-*-*-*-*-*-*-*-*-
+//Generic Macros:
+//-*-*-*-*-*-*-*-*-*-*-*
+#define HSI_Clock 			8000000UL
+#define HSE_Clock 			16000000UL
+uint32 get_SYSCLK(void);
+uint32 get_HCLK(void);
+uint32 get_PCLK1(void);
+uint32 get_PCLK(void);
+
+
+
+#endif /* MCAL_INCLUDES_RCC_H_ */

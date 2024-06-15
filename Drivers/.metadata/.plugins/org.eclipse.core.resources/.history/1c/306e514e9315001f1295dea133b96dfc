@@ -1,0 +1,44 @@
+/*
+ * EXTI.c
+ *
+ *  Created on: May 19, 2024
+ *      Author: Mohamed Shaban
+ */
+
+#include "EXTI.h"
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_init
+* @brief 		-Initializes the EXTI according to the configuration structure
+* @param [in] 	-pinCFG :pointer to the configuration structure
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_Init(EXTI_PinConfig_t pinCFG)
+{
+
+}
+
+
+/*=================================================================================================
+* @Fn-           MCAL_EXTI_Update
+* @brief 		-update the configuration for the required EXTI PIN
+* @param [in] 	-pinCFG : the configuration structure
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_Update(EXTI_PinConfig_t pinCFG)
+{}
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_EXTI_DeInit
+* @brief 		-reset EXTI registers and  disable IRQ from NVIC
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void MCAL_EXTI_DeInit(void)
+{
+	EXTI->
+}

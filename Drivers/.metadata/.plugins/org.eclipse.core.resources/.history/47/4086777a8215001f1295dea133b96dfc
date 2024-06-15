@@ -1,0 +1,189 @@
+/*
+ * EXTI.h
+ *
+ *  Created on: May 19, 2024
+ *      Author: user
+ */
+
+#ifndef MCAL_INCLUDES_EXTI_H_
+#define MCAL_INCLUDES_EXTI_H_
+
+//-----------------------------
+//Includes
+//-----------------------------
+#include "STM32F103x6.h"
+#include "gpio.h"
+
+
+//-----------------------------------
+//User type definitions (structures)
+//-----------------------------------
+
+
+//GPIO Interrupt mapping structure
+typedef struct{
+	uint8 pinNum;
+	GPIO_TypeDef GPIOx;
+	uint8 EXTI_Line;
+	uint8 EXTI_Line_IRQ;
+}EXTI_GPIO_Mapping_t;
+
+
+//Configuration structure for EXTI
+typedef struct {
+	EXTI_GPIO_Mapping_t EXTI_Pin;   	//mapping pin to EXTI input line
+								        //this parameter can be a value of  @ref EXTIL_define
+
+
+}EXTI_PinConfig_t;
+
+
+
+//-----------------------------
+//Macros Configuration References
+//-----------------------------
+
+//EXTI_Lines
+#define EXTI0	0
+#define EXTI1	1
+#define EXTI2	2
+#define EXTI3	3
+#define EXTI4	4
+#define EXTI5	5
+#define EXTI6	6
+#define EXTI7	7
+#define EXTI8	8
+#define EXTI9	9
+#define EXTI10	10
+#define EXTI11	11
+#define EXTI12	12
+#define EXTI13	13
+#define EXTI14	14
+#define EXTI15	15
+
+
+
+
+
+
+
+
+//@ref EXTIL_define
+#define EXTIL0PA0	(EXTI_GPIO_Mapping_t){GPIO_PIN0,GPIOA,EXTI0,}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+* ===============================================
+* APIs Supported by "MCAL GPIO DRIVER"
+* ===============================================
+*/
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_init
+* @brief 		-Initializes the GPIOx PINy according to the specified parameters of PinConfig
+* @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select GPIO peripheral
+* @param [in]	-PinConfig : Pointer to GPIO_PinConfig_t which contains
+* 				 the configuration info for specified GPIO
+* @retval       -None
+* Note			-STM32F103C6 MCU has GPIO A,B,C,D,E ports
+* 				 but LQFP48 Package has A,B ,Part of C&D
+================================================================================================*/
+void  MCAL_GPIO_init (GPIO_TypeDef* GPIOx ,GPIO_PinConfig_t* PINConfig);
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_Deinit
+* @brief 		-Reset the peripheral and its registers
+* @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select GPIO peripheral
+* @retval       -None
+* Note			-None
+================================================================================================*/
+void  MCAL_GPIO_Deinit (GPIO_TypeDef* GPIOx );
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_ReadPIN
+* @brief 		-return the value of the input pin
+* @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select GPIO peripheral
+* @param [in]   -PIN_Number : the input pin
+* @retval       -GPIO_PIN_State high or low according to @ref GPIO_PIN_State
+* Note			-None
+================================================================================================*/
+uint8 MCAL_GPIO_ReadPIN (GPIO_TypeDef* GPIOx ,uint8 PIN_Number);
+
+
+
+/*=================================================================================================
+* @Fn-           MCAL_GPIO_ReadPort
+* @brief 		-Read the input port value
+* @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select GPIO peripheral
+* @retval       -The input port value
+* Note			-None
+================================================================================================*/
+uint16 MCAL_GPIO_ReadPort (GPIO_TypeDef* GPIOx );
+
+
+/*=================================================================================================
+* @Fn			-MCAL_GPIO_WritePin
+ * @brief		-Write value on specific PIN
+ * @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select the GPIO Peripheral
+ * @param [in]	-PinNumber : Specific Pin number to be Write on according to @ref GPIO_PINS_Define
+ * @param [in]	-Value : PIN value
+ * @retval 		-None
+ * Note 		-None
+================================================================================================*/
+void MCAL_GPIO_WritePIN (GPIO_TypeDef* GPIOx ,uint8 PIN_Number,uint8 value )
+;
+
+/*===================================================================================================
+ * @Fn			-MCAL_GPIO_WritePort
+ * @brief		-Write value on PORT
+ * @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select the GPIO Peripheral
+ * @param [in]	-Value : PORT value
+ * @retval 		-None
+ * Note 		-None
+ ===================================================================================================*/
+void MCAL_GPIO_WritePort (GPIO_TypeDef* GPIOx, uint16 value );
+
+
+
+/*===================================================================================================
+ * @Fn			-MCAL_GPIO_TogglePin
+ * @brief		-Toggle a specific PIN
+ * @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select the GPIO Peripheral
+ * @param [in]	-PinNumber : Specific Pin number to be Toggled according to @ref GPIO_PINS_Define
+ * @retval 		-None
+ * Note 		-None
+ ====================================================================================================*/
+void  MCAL_GPIO_TogglePIN (GPIO_TypeDef* GPIOx ,uint8 PIN_Number);
+
+
+
+
+/*=====================================================================================================
+ * @Fn			-MCAL_GPIO_LockPin
+ * @brief		-Locking allows the IO configuration to be frozen
+ * @param [in] 	-GPIOx : where x can be (A..E depending on device used) to select the GPIO Peripheral
+ * @param [in]	-PinNumber : Specific Pin number to be Locked according to @ref GPIO_PINS_Define
+ * @retval 		-Ok if lock is successful , Error if not (according to @ref GPIO_LOCK_State
+ * Note 		-None
+ ======================================================================================================*/
+uint8  MCAL_GPIO_LockPIN (GPIO_TypeDef* GPIOx ,uint8 PIN_Number);
+
+
+#endif /* MCAL_INCLUDES_EXTI_H_ */
